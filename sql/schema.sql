@@ -29,3 +29,20 @@ CREATE TABLE IF NOT EXISTS StudentsInterests (
     FOREIGN KEY (studentID) REFERENCES Students(studentID) ON DELETE CASCADE
 )
 
+CREATE TABLE Notification (
+    notificationID INT AUTO_INCREMENT PRIMARY KEY,
+    studentID INT NOT NULL,
+    message VARCHAR(255) NOT NULL,
+    date DATE NOT NULL,
+    type VARCHAR(50),
+    FOREIGN KEY (studentID) REFERENCES Student(studentID)
+);
+
+CREATE TABLE AlumniConnection (
+    connectionID INT AUTO_INCREMENT PRIMARY KEY,
+    studentID INT NOT NULL,
+    alumniName VARCHAR(100) NOT NULL,
+    company VARCHAR(100),
+    contactInfo VARCHAR(150),
+    FOREIGN KEY (studentID) REFERENCES Student(studentID)
+);
