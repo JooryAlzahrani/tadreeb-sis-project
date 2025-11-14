@@ -6,7 +6,7 @@ const getBlogData = (): Blog[] => [
     id: 1,
     title: "Al Rajhi Bank Cooperative Training Program",
     paragraph:
-      "Majors: Finance, Computer Science, Cybersecurity, Law. Location: Riyadh. Duration: Varies per semester. **Required GPA: Very Good.**",
+      "Majors: Finance, Computer Science, Cybersecurity, Law. Location: Riyadh. Duration: Varies per semester. Required GPA: Very Good.",
     image: getImagePath("/images/blog/alrajhibank.png"), 
     author: {
       name: "Al Rajhi Bank",
