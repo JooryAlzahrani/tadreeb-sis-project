@@ -4,17 +4,17 @@ import { Blog } from "@/types/blog";
 const getBlogData = (): Blog[] => [
   {
     id: 1,
-    title: "Best UI components for modern websites",
+    title: "Al Rajhi Bank Cooperative Training Program",
     paragraph:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet dictum neque, laoreet dolor.",
-    image: getImagePath("/images/blog/blog-01.jpg"),
+      "Majors: Finance, Computer Science, Cybersecurity, Law. Location: Riyadh. Duration: Varies per semester. **Required GPA: Very Good.**",
+    image: getImagePath("/images/blog/alrajhibank.png"), 
     author: {
-      name: "Samuyl Joshi",
-      image: getImagePath("/images/blog/author-01.png"),
-      designation: "Graphic Designer",
+      name: "Al Rajhi Bank",
+      image: getImagePath("/images/blog/alrajhibank.png"), 
+      designation: "Banking & Finance",
     },
-    tags: ["creative"],
-    publishDate: "2025",
+    tags: ["Finance", "CS"],
+    publishDate: "2025-2026",
   },
   {
     id: 2,

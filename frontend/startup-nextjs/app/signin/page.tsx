@@ -3,8 +3,10 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Sign In Page | Free Next.js Template for Startup and SaaS",
-  description: "This is Sign In Page for Startup Nextjs Template",
+  // MODIFIED: Title reflects "Log In"
+  title: "Log In | Tadreeb", 
+  // MODIFIED: Description is specific to the platform
+  description: "Access your Tadreeb account to explore verified internship opportunities, manage bookmarks, and receive personalized notifications based on your profile.",
   // other metadata
 };
 
@@ -17,10 +19,12 @@ const SigninPage = () => {
             <div className="w-full px-4">
               <div className="shadow-three mx-auto max-w-[500px] rounded bg-white px-6 py-10 dark:bg-dark sm:p-[60px]">
                 <h3 className="mb-3 text-center text-2xl font-bold text-black dark:text-white sm:text-3xl">
-                  Sign in to your account
+                  {/* MODIFIED: Main Title */}
+                  Log In to Your Tadreeb Account
                 </h3>
                 <p className="mb-11 text-center text-base font-medium text-body-color">
-                  Login to your account for a faster checkout.
+                  {/* MODIFIED: Intro Paragraph */}
+                  Access your account to explore verified internship opportunities.
                 </p>
                 <button className="border-stroke dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none">
                   <span className="mr-3">
@@ -76,7 +80,8 @@ const SigninPage = () => {
                 <div className="mb-8 flex items-center justify-center">
                   <span className="hidden h-[1px] w-full max-w-[70px] bg-body-color/50 sm:block"></span>
                   <p className="w-full px-5 text-center text-base font-medium text-body-color">
-                    Or, sign in with your email
+                    {/* MODIFIED: Separator Text */}
+                    Or, log in with your email
                   </p>
                   <span className="hidden h-[1px] w-full max-w-[70px] bg-body-color/50 sm:block"></span>
                 </div>
@@ -154,16 +159,24 @@ const SigninPage = () => {
                   </div>
                   <div className="mb-6">
                     <button className="shadow-submit dark:shadow-submit-dark flex w-full items-center justify-center rounded-sm bg-primary px-9 py-4 text-base font-medium text-white duration-300 hover:bg-primary/90">
-                      Sign in
+                      {/* MODIFIED: Submit button text */}
+                      Log In
                     </button>
                   </div>
                 </form>
                 <p className="text-center text-base font-medium text-body-color">
-                  Don’t you have an account?{" "}
-                  <Link href="/signup" className="text-primary hover:underline">
-                    Sign up
+                  {/* MODIFIED: Link text and destination */}
+                  Don’t have an account?{" "}
+                  <Link href="/register" className="text-primary hover:underline">
+                    Create an Account
                   </Link>
                 </p>
+                
+                {/* ADDED: Closing Note */}
+                <p className="mt-8 text-center text-sm font-medium text-body-color/80 dark:text-white/80">
+                  Logging in gives students full access to Tadreeb’s features, including saved internships, notifications, and personalized recommendations.
+                </p>
+
               </div>
             </div>
           </div>

@@ -3,8 +3,10 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Sign Up Page | Free Next.js Template for Startup and SaaS",
-  description: "This is Sign Up Page for Startup Nextjs Template",
+  // MODIFIED: Title reflects the platform name
+  title: "Register | Tadreeb",
+  // MODIFIED: Description is specific to the platform
+  description: "Join Tadreeb and connect with trusted companies offering verified internships.",
   // other metadata
 };
 
@@ -17,11 +19,15 @@ const SignupPage = () => {
             <div className="w-full px-4">
               <div className="shadow-three mx-auto max-w-[500px] rounded bg-white px-6 py-10 dark:bg-dark sm:p-[60px]">
                 <h3 className="mb-3 text-center text-2xl font-bold text-black dark:text-white sm:text-3xl">
-                  Create your account
+                  {/* MODIFIED: Main Title */}
+                  Create Your Tadreeb Account
                 </h3>
                 <p className="mb-11 text-center text-base font-medium text-body-color">
-                  It’s totally free and super easy
+                  {/* MODIFIED: Intro Paragraph */}
+                  Join Tadreeb and connect with trusted companies offering verified internships.
                 </p>
+                
+                {/* --- Social Sign-In Buttons remain the same --- */}
                 <button className="border-stroke dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none">
                   <span className="mr-3">
                     <svg
@@ -76,11 +82,13 @@ const SignupPage = () => {
                 <div className="mb-8 flex items-center justify-center">
                   <span className="hidden h-[1px] w-full max-w-[60px] bg-body-color/50 sm:block"></span>
                   <p className="w-full px-5 text-center text-base font-medium text-body-color">
-                    Or, register with your email
+                    {/* MODIFIED: Separator text */}
+                    Or, register with your details
                   </p>
                   <span className="hidden h-[1px] w-full max-w-[60px] bg-body-color/50 sm:block"></span>
                 </div>
                 <form>
+                  {/* MODIFIED: Full Name Input (Originally there) */}
                   <div className="mb-8">
                     <label
                       htmlFor="name"
@@ -96,21 +104,59 @@ const SignupPage = () => {
                       className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
                     />
                   </div>
+                  
+                  {/* MODIFIED: University Email Input */}
                   <div className="mb-8">
                     <label
                       htmlFor="email"
                       className="mb-3 block text-sm text-dark dark:text-white"
                     >
                       {" "}
-                      Work Email{" "}
+                      University Email{" "}
                     </label>
                     <input
                       type="email"
                       name="email"
-                      placeholder="Enter your Email"
+                      placeholder="Enter your university email"
                       className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
                     />
                   </div>
+                  
+                  {/* ADDED: University Input */}
+                  <div className="mb-8">
+                    <label
+                      htmlFor="university"
+                      className="mb-3 block text-sm text-dark dark:text-white"
+                    >
+                      {" "}
+                      University{" "}
+                    </label>
+                    <input
+                      type="text"
+                      name="university"
+                      placeholder="Enter your university name"
+                      className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
+                    />
+                  </div>
+                  
+                  {/* ADDED: Major Input */}
+                  <div className="mb-8">
+                    <label
+                      htmlFor="major"
+                      className="mb-3 block text-sm text-dark dark:text-white"
+                    >
+                      {" "}
+                      Major{" "}
+                    </label>
+                    <input
+                      type="text"
+                      name="major"
+                      placeholder="Enter your academic major"
+                      className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
+                    />
+                  </div>
+                  
+                  {/* Password Input (Originally there) */}
                   <div className="mb-8">
                     <label
                       htmlFor="password"
@@ -126,6 +172,8 @@ const SignupPage = () => {
                       className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
                     />
                   </div>
+                  
+                  {/* Checkbox remains the same, but the text is now more specific to T&C */}
                   <div className="mb-8 flex">
                     <label
                       htmlFor="checkboxLabel"
@@ -157,7 +205,7 @@ const SignupPage = () => {
                         </div>
                       </div>
                       <span>
-                        By creating account means you agree to the
+                        By registering, you agree to the
                         <a href="#0" className="text-primary hover:underline">
                           {" "}
                           Terms and Conditions{" "}
@@ -172,20 +220,30 @@ const SignupPage = () => {
                   </div>
                   <div className="mb-6">
                     <button className="shadow-submit dark:shadow-submit-dark flex w-full items-center justify-center rounded-sm bg-primary px-9 py-4 text-base font-medium text-white duration-300 hover:bg-primary/90">
-                      Sign up
+                      {/* MODIFIED: Submit button text */}
+                      Register
                     </button>
                   </div>
                 </form>
                 <p className="text-center text-base font-medium text-body-color">
-                  Already using Startup?{" "}
+                  {/* MODIFIED: Link text and destination */}
+                  Already have an account?{" "}
                   <Link href="/signin" className="text-primary hover:underline">
-                    Sign in
+                    Log In
                   </Link>
                 </p>
+                
+                {/* ADDED: Closing Note */}
+                <p className="mt-8 text-center text-sm font-medium text-body-color/80 dark:text-white/80">
+                  Once registered, users can log in anytime to browse, save, and apply for internships that match their academic and professional goals.
+                </p>
+                
               </div>
             </div>
           </div>
         </div>
+        
+        {/* SVG Background remains the same */}
         <div className="absolute left-0 top-0 z-[-1]">
           <svg
             width="1440"
