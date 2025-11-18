@@ -13,22 +13,22 @@ const getBlogData = (): Blog[] => [
       image: getImagePath("/images/blog/alrajhibank.png"), 
       designation: "Banking & Finance",
     },
-    tags: ["Finance", "CS"],
+    tags: ["Bank"],
     publishDate: "2025-2026",
   },
   {
     id: 2,
-    title: "9 simple ways to improve your design skills",
+    title: "PwC Consulting Co-op Program 2026",
     paragraph:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet dictum neque, laoreet dolor.",
+      "PwC is seeking driven students for their 2026 Consulting Co-op Program. Gain hands-on experience in consulting projects across industries.",
     image: getImagePath("/images/blog/blog-02.jpg"),
     author: {
-      name: "Musharof Chy",
+      name: "PwC",
       image: getImagePath("/images/blog/author-02.png"),
       designation: "Content Writer",
     },
-    tags: ["computer"],
-    publishDate: "2025",
+    tags: ["Consulting"],
+    publishDate: "2026",
   },
   {
     id: 3,
