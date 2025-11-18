@@ -6,28 +6,28 @@ import SingleTestimonial from "./SingleTestimonial";
 const getTestimonialData = (): Testimonial[] => [
   {
     id: 1,
-    name: "Musharof Chy",
-    designation: "Founder @TailGrids",
+    name: "Heba Halawany",
+    designation: "Medical Student @Vision Colleges",
     content:
-      "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
+      "Your website is so organized and made it easy for me to find new opportunities",
     image: getImagePath("/images/testimonials/auth-01.png"),
     star: 5,
   },
   {
     id: 2,
-    name: "Devid Weilium",
-    designation: "Founder @UIdeck",
+    name: "Hoor Oreijah",
+    designation: "Design Student @ University of Melbourne",
     content:
-      "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
+      "The place to go to for up to date internships!",
     image: getImagePath("/images/testimonials/auth-02.png"),
     star: 5,
   },
   {
     id: 3,
-    name: "Lethium Frenci",
-    designation: "Founder @Lineicons",
+    name: "Rose AlSubhi",
+    designation: "English Student @ UQU",
     content:
-      "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
+      "Your website saved me a lot of time and helped me find the best of the best",
     image: getImagePath("/images/testimonials/auth-03.png"),
     star: 5,
   },

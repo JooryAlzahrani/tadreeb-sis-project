@@ -14,8 +14,8 @@ const Video = () => {
     <section className="relative z-10 py-16 md:py-20 lg:py-28">
       <div className="container">
         <SectionTitle
-          title="We are ready to help"
-          paragraph="There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form."
+          title="We are ready to launch your internship journey"
+          paragraph="Access hundreds of training opportunities with Tadreeb. Your future starts here. Watch our video to learn more about how we can help you succeed."
           center
           mb="80px"
         />

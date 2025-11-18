@@ -19,12 +19,10 @@ const Hero = () => {
                 data-wow-delay=".2s"
               >
                 <h1 className="mb-5 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl sm:leading-tight md:text-5xl md:leading-tight">
-                  A Centralized Internship Portal for Saudi University Students
+                  Your Verified Internship Hub
                 </h1>
                 <p className="mb-12 text-base !leading-relaxed text-body-color dark:text-body-color-dark sm:text-lg md:text-xl">
-                  Tadreeb is your gateway to verified internship opportunities for Saudi University Students. 
-                  Filter listings by major, location, requirements, and semester, get personalized recommendations, early notifictions, and reminders for deadline interviews.
-                  Connect with alumni, bookmark your favorite internships, and track in-demand opportunities, all on one centralized platform backed by universities and companies for authenticity. 
+                  Tadreeb is the centralized platform for Saudi University Students to find authentic, relevant, and verified internship opportunities. Get personalized matches, track applications, and connect with top companies and alumni—all in one place.
                 </p>
                 <div className="flex flex-col items-center justify-center space-y-4 sm:flex-row sm:space-x-4 sm:space-y-0">
                   <Link
@@ -40,7 +38,7 @@ const Hero = () => {
           </div>
         </div>
         <div className="absolute right-0 top-0 z-[-1] opacity-30 lg:opacity-100">
-         
+          
         </div>
         <div className="absolute bottom-0 left-0 z-[-1] opacity-30 lg:opacity-100">
           

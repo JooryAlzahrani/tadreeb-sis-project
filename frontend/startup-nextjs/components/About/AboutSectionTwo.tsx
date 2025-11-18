@@ -38,19 +38,19 @@ const AboutSectionTwo = () => {
                 </h3>
                 
                 {}
-                <h4 className="mb-2 text-xl font-semibold text-primary">Taif Alzahrani</h4>
+                <h4 className="mb-2 text-xl font-semibold text-primary">Joory Alzahrani</h4>
                 <p className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed mb-4">
-                  Content Designer & Page Layout
+                  Project Leader & Full-Stack Developer
                 </p>
 
                 {}
-                <h4 className="mb-2 text-xl font-semibold text-primary">Joory Alzahrani</h4>
+                <h4 className="mb-2 text-xl font-semibold text-primary">Esraa AbdElraheem</h4>
                 <p className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed mb-4">
-                  Front-end Developer & Team Leader
+                  Front-end Implementation & Testing
                 </p>
                  
                 {}
-                <h4 className="mb-2 text-xl font-semibold text-primary">Esraa AbdElraheem</h4>
+                <h4 className="mb-2 text-xl font-semibold text-primary">Taif Alzahrani</h4>
                 <p className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed mb-4">
                   Front-end Implementation & Testing
                 </p>
