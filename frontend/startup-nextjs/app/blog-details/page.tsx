@@ -76,12 +76,12 @@ const BlogDetailsPage = () => {
                   <div className="mb-5">
                     <a
                       // APPLY LINK BUTTON
-                      href="Click here" 
+                      href="https://careers.alrajhibank.com.sa/en/saudi-arabia/jobs/coop-training-%D8%A7%D9%84%D8%AA%D8%AF%D8%B1%D9%8A%D8%A8-%D8%A7%D9%84%D8%AA%D8%B9%D8%A7%D9%88%D9%86%D9%8A-1100037814/" 
                       className="inline-flex items-center justify-center rounded-full bg-primary px-4 py-2 text-sm font-semibold text-white"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      Apply Link
+                      Apply Now
                     </a>
                   </div>
                 </div>
