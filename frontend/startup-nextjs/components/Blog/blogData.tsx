@@ -32,16 +32,16 @@ const getBlogData = (): Blog[] => [
   },
   {
     id: 3,
-    title: "Tips to quickly improve your coding speed.",
+    title: "STC Co-operative Training Program - January 2026.",
     paragraph:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras sit amet dictum neque, laoreet dolor.",
+      "Join STC’s Co-op Program and work on real digital transformation projects in areas like software engineering, networks, cybersecurity, data, and business innovation.",
     image: getImagePath("/images/blog/blog-03.jpg"),
     author: {
-      name: "Lethium Deo",
+      name: "STC",
       image: getImagePath("/images/blog/author-03.png"),
       designation: "Graphic Designer",
     },
-    tags: ["design"],
+    tags: ["Telecom"],
     publishDate: "2025",
   },
 ];
