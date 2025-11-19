@@ -10,7 +10,7 @@ const getTestimonialData = (): Testimonial[] => [
     designation: "Medical Student @Vision Colleges",
     content:
       "Your website is so organized and made it easy for me to find new opportunities",
-    image: getImagePath("/images/testimonials/auth-01.png"),
+    image: getImagePath("/images/blog/woman-2.png"),
     star: 5,
   },
   {
@@ -19,7 +19,7 @@ const getTestimonialData = (): Testimonial[] => [
     designation: "Design Student @ University of Melbourne",
     content:
       "The place to go to for up to date internships!",
-    image: getImagePath("/images/testimonials/auth-02.png"),
+    image: getImagePath("/images/blog/woman.png"),
     star: 5,
   },
   {
@@ -28,7 +28,7 @@ const getTestimonialData = (): Testimonial[] => [
     designation: "English Student @ UQU",
     content:
       "Your website saved me a lot of time and helped me find the best of the best",
-    image: getImagePath("/images/testimonials/auth-03.png"),
+    image: getImagePath("/images/blog/profile-2.png"),
     star: 5,
   },
 ];
