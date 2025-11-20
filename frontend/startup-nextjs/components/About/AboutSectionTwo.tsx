@@ -52,7 +52,7 @@ const AboutSectionTwo = () => {
                 {}
                 <h4 className="mb-2 text-xl font-semibold text-primary">Taif Alzahrani</h4>
                 <p className="text-base font-medium leading-relaxed text-body-color sm:text-lg sm:leading-relaxed mb-4">
-                  Front-end Implementation & Testing
+                  Content Designer & Page Layout
                 </p>
 
                 {}
