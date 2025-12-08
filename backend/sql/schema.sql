@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS Admins (
 
 CREATE TABLE IF NOT EXISTS Students (
     studentID INT PRIMARY KEY,
-    FOREIGN KEY (studentID) REFERENCES Users(userID) ON DELETE CASCADE
+    FOREIGN KEY (studentID) REFERENCES Users(userID) ON DELETE CASCADE,
     notificationsEnabled BOOLEAN DEFAULT TRUE
 );
 
@@ -27,7 +27,7 @@ CREATE TABLE IF NOT EXISTS StudentsInterests (
     interest VARCHAR(100),
     PRIMARY KEY (studentID, interest),
     FOREIGN KEY (studentID) REFERENCES Students(studentID) ON DELETE CASCADE
-)
+);
 
 CREATE TABLE Notification (
     notificationID INT AUTO_INCREMENT PRIMARY KEY,
@@ -35,14 +35,14 @@ CREATE TABLE Notification (
     message VARCHAR(255) NOT NULL,
     date DATE NOT NULL,
     type VARCHAR(50),
-    FOREIGN KEY (studentID) REFERENCES Student(studentID)
+    FOREIGN KEY (studentID) REFERENCES Students(studentID)
 );
 
-CREATE TABLE AlumniConnection (
+CREATE TABLE AlumniConnections (
     connectionID INT AUTO_INCREMENT PRIMARY KEY,
     studentID INT NOT NULL,
     alumniName VARCHAR(100) NOT NULL,
     company VARCHAR(100),
     contactInfo VARCHAR(150),
-    FOREIGN KEY (studentID) REFERENCES Student(studentID)
+    FOREIGN KEY (studentID) REFERENCES Students(studentID)
 );
