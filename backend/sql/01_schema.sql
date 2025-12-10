@@ -1,4 +1,4 @@
-CREATE SCHEMA IF NOT EXISTS tadreeb_sis;
+CREATE DATABASE IF NOT EXISTS tadreeb_sis;
 USE tadreeb_sis;
 
 CREATE TABLE IF NOT EXISTS Users (

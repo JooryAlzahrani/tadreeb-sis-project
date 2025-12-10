@@ -1,29 +1,22 @@
+version: '4'
 
 services:
-  mysql:
+  web: 
+    image: php:apache
+    volumes:
+      - ./backend/scripts:/var/www/html
+    ports: 
+      - 80:80 
+  db:
     image: mysql:8.0
-    container_name: tadreeb-mysql
-    restart: always
-    ports:
-      - "3306:3306" 
-    environment:
+    volumes:
+      - db:/var/lib/mysql
+      - ./backend/sql:/docker-entrypoint-initdb.d 
+    environment: 
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: tadreeb_sis
       MYSQL_USER: tadreeb_user
       MYSQL_PASSWORD: userpassword
-    volumes:
-      - db_data:/var/lib/mysql
-
-  php:
-    image: php:8.2-apache
-    container_name: tadreeb-php
-    restart: always
-    ports:
-      - "8000:80"         
-    volumes:
-      - ./backend:/var/www/html   
-    depends_on:
-      - mysql
-
 volumes:
-  db_data:
+  db:
+  
