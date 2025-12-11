@@ -11,11 +11,29 @@ if (!$id) {
 
 $stmt = $pdo->prepare("SELECT * FROM Internship WHERE internshipID = :id");
 $stmt->execute([':id' => $id]);
-$internship = $stmt->fetch();
+$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-if ($internship) {
-    echo json_encode($internship);
-} else {
+if (!$row) {
     echo json_encode(['error' => 'Internship not found']);
+    exit;
 }
+
+$internship = [
+    "id" => $row["internshipID"],
+    "title" => $row["title"],
+    "paragraph" => $row["short_description"],
+    "image" => $row["image_url"],
+    "author" => [
+        "name" => $row["company"],
+        "image" => $row["image_url"],
+        "designation" => $row["category"] ?? "Internship"
+    ],
+    "tags" => [$row["category"] ?? "General"],
+    "publishDate" => $row["posted_date"],
+    "slug" => $row["slug"],
+    "location" => $row["location"],
+    "deadline" => $row["deadline"]
+];
+
+echo json_encode($internship);
 ?>

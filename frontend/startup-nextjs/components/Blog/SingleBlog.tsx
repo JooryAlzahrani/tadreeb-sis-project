@@ -45,16 +45,41 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
                 <p className="text-xs text-body-color">{author.designation}</p>
               </div>
             </div>
-            <div className="inline-block">
+            <div className="w-full">
               <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
-                Date
+                By {author.name}
               </h4>
-              <p className="text-xs text-body-color">{publishDate}</p>
+              <p className="text-xs text-body-color">{author.designation}</p>
             </div>
           </div>
+
+          <div className="inline-block">
+            <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
+              Date
+            </h4>
+            <p className="text-xs text-body-color">{publishDate}</p>
+          </div>
+
+          {location && (
+            <div className="inline-block">
+              <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
+                Location
+              </h4>
+              <p className="text-xs text-body-color">{location}</p>
+            </div>
+          )}
+
+          {deadline && (
+            <div className="inline-block">
+              <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
+                Deadline
+              </h4>
+              <p className="text-xs text-body-color">{deadline}</p>
+            </div>
+          )}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

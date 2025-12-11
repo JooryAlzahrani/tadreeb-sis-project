@@ -10,6 +10,9 @@ export type Blog = {
   body?: string;
   paragraph: string;
   image: string;
+  location: string;
+  deadline: string;
+  slug: string;
   author: Author;
   tags: string[];
   publishDate: string;

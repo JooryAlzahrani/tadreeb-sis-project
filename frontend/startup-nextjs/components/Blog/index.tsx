@@ -1,8 +1,29 @@
-import SectionTitle from "../Common/SectionTitle";
-import SingleBlog from "./SingleBlog";
-import blogData from "./blogData";
+import SingleBlog from "@/components/Blog/SingleBlog";
+import { mapPHPDataToBlog } from "@/components/Blog/blogData";
+import Breadcrumb from "@/components/Common/Breadcrumb";
 
-const Blog = () => {
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Internship Listings | Tadreeb",
+  description:
+    "Find and filter verified internship opportunities tailored for you. Explore listings by major, location, requirements, and semester to kickstart your career journey.",
+};
+
+const Blog = async () => {
+  let data: any[] = [];
+
+  try {
+    const res = await fetch("http://localhost/api/getInternships.php", {
+      cache: "no-store",
+    });
+    data = await res.json();
+  } catch (err) {
+    console.error("Failed to fetch internships:", err);
+  }
+
+  const blogs = mapPHPDataToBlog(data);
+
   return (
     <section
       id="blog"
@@ -22,8 +43,8 @@ const Blog = () => {
             </div>
           ))}
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };
 
