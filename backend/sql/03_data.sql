@@ -32,7 +32,7 @@ INSERT INTO Internship (
     'Fall 2025',
     '2025-12-31',
     'al-rajhi-bank-coop-2026',
-    FALSE
+    TRUE
 ),
 (
     'PwC Consulting Co-op Program 2026',
@@ -49,7 +49,7 @@ INSERT INTO Internship (
     'Spring 2026',
     '2026-01-31',
     'pwc-consulting-coop-2026',
-    FALSE
+    TRUE
 ),
 (
     'STC Co-op Program January 2026',
@@ -66,7 +66,7 @@ INSERT INTO Internship (
     'Spring 2026',
     '2026-01-15',
     'stc-coop-january-2026',
-    FALSE
+    TRUE
 ),
 (
     'Saudi Aramco Co-op Training Program',
@@ -83,7 +83,7 @@ INSERT INTO Internship (
     'Spring 2026',
     '2025-12-30',
     'saudi-aramco-coop-spring-2026',
-    FALSE
+    TRUE
 ),
 (
     'SABIC Cooperative Training Program 2026',
@@ -100,7 +100,7 @@ INSERT INTO Internship (
     'Spring 2026',
     '2026-01-10',
     'sabic-coop-training-2026',
-    FALSE
+    TRUE
 ),
 (
     'KPMG COOP and Internship Programs',
@@ -117,5 +117,5 @@ INSERT INTO Internship (
     'Fall 2025 / Spring 2026',
     '2026-01-31',
     'kpmg-coop-internship-2026',
-    FALSE
+    TRUE
 );
