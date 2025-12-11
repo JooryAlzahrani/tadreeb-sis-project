@@ -1,29 +1,8 @@
-import SingleBlog from "@/components/Blog/SingleBlog";
-import { mapPHPDataToBlog } from "@/components/Blog/blogData";
-import Breadcrumb from "@/components/Common/Breadcrumb";
+import SectionTitle from "../Common/SectionTitle";
+import SingleBlog from "./SingleBlog";
+import mapPHPDataToBlog from "./blogData";
 
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "Internship Listings | Tadreeb",
-  description:
-    "Find and filter verified internship opportunities tailored for you. Explore listings by major, location, requirements, and semester to kickstart your career journey.",
-};
-
-const Blog = async () => {
-  let data: any[] = [];
-
-  try {
-    const res = await fetch("http://localhost/api/getInternships.php", {
-      cache: "no-store",
-    });
-    data = await res.json();
-  } catch (err) {
-    console.error("Failed to fetch internships:", err);
-  }
-
-  const blogs = mapPHPDataToBlog(data);
-
+const Blog = () => {
   return (
     <section
       id="blog"
@@ -31,20 +10,20 @@ const Blog = async () => {
     >
       <div className="container">
         <SectionTitle
-          title="Internship Listings"
-          paragraph="Find and filter verified internship opportunities tailored for you. Explore listings by major, location, requirements, and semester to kickstart your career journey."
+          title="Our Latest Blogs"
+          paragraph="There are many variations of passages of Lorem Ipsum available but the majority have suffered alteration in some form."
           center
         />
 
         <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 md:gap-x-6 lg:gap-x-8 xl:grid-cols-3">
-          {blogData().map((blog) => (
+          {mapPHPDataToBlog([]).map((blog) => (
             <div key={blog.id} className="w-full">
               <SingleBlog blog={blog} />
             </div>
           ))}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };
 
