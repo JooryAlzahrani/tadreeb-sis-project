@@ -1,12 +1,11 @@
 import { Blog } from "@/types/blog";
 
-// Helper function to map PHP API response to Blog[]
 export const mapPHPDataToBlog = (data: any[]): Blog[] => {
   return data.map((row: any) => ({
     id: row.id,
     title: row.title,
     paragraph: row.paragraph,
-    image: row.image, // you can still use getImagePath if needed
+    image: row.image, 
     author: {
       name: row.author.name,
       image: row.author.image,

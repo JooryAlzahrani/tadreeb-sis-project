@@ -3,14 +3,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 const SingleBlog = ({ blog }: { blog: Blog }) => {
-  const { id, title, image, paragraph, author, tags, publishDate, location, deadline, slug } = blog;
+  const { id, title, image, paragraph, author, tags, location, slug } = blog;
 
-  // Use slug if you want prettier URLs, otherwise fallback to ID
   const detailLink = `/blog/${slug || id}`;
 
   return (
     <div
-      className="wow fadeInUp hover:shadow-two dark:hover:shadow-gray-dark group relative overflow-hidden rounded-sm bg-white shadow-one duration-300 dark:bg-dark"
+      className="wow fadeInUp hover:shadow-two dark:hover:shadow-gray-dark group relative overflow-hidden rounded-sm bg-white shadow-one duration-300 dark:bg-dark flex flex-col h-full"
       data-wow-delay=".1s"
     >
       <Link href={detailLink} className="relative block aspect-[37/22] w-full">
@@ -20,7 +19,7 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
         <Image src={image} alt={title} fill />
       </Link>
 
-      <div className="p-6 sm:p-8 md:px-6 md:py-8 lg:p-8 xl:px-5 xl:py-8 2xl:p-8">
+      <div className="p-6 sm:p-8 md:px-6 md:py-8 lg:p-8 xl:px-5 xl:py-8 2xl:p-8 flex flex-col flex-1">
         <h3>
           <Link
             href={detailLink}
@@ -30,18 +29,20 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
           </Link>
         </h3>
 
-        <p className="mb-6 border-b border-body-color border-opacity-10 pb-6 text-base font-medium text-body-color dark:border-white dark:border-opacity-10">
+        <p className="mb-6 border-b border-body-color border-opacity-10 pb-6 text-base font-medium text-body-color dark:border-white dark:border-opacity-10 flex-1">
           {paragraph}
         </p>
 
-        <div className="flex items-center flex-wrap gap-4">
-          <div className="mr-5 flex items-center border-r border-body-color border-opacity-10 pr-5 dark:border-white dark:border-opacity-10 xl:mr-3 xl:pr-3 2xl:mr-5 2xl:pr-5">
+        {/* Author and Location in single row */}
+        <div className="flex items-center justify-between gap-6 mt-auto">
+          {/* Author */}
+          <div className="flex items-center flex-1 border-r border-body-color border-opacity-10 pr-5 dark:border-white dark:border-opacity-10">
             <div className="mr-4">
               <div className="relative h-10 w-10 overflow-hidden rounded-full">
                 <Image src={author.image} alt={author.name} fill />
               </div>
             </div>
-            <div className="w-full">
+            <div>
               <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
                 By {author.name}
               </h4>
@@ -49,28 +50,11 @@ const SingleBlog = ({ blog }: { blog: Blog }) => {
             </div>
           </div>
 
-          <div className="inline-block">
-            <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
-              Date
-            </h4>
-            <p className="text-xs text-body-color">{publishDate}</p>
-          </div>
-
+          {/* Location */}
           {location && (
-            <div className="inline-block">
-              <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
-                Location
-              </h4>
-              <p className="text-xs text-body-color">{location}</p>
-            </div>
-          )}
-
-          {deadline && (
-            <div className="inline-block">
-              <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">
-                Deadline
-              </h4>
-              <p className="text-xs text-body-color">{deadline}</p>
+            <div className="flex flex-col flex-1">
+              <h4 className="mb-1 text-sm font-medium text-dark dark:text-white">Location</h4>
+              <p className="text-xs text-body-color truncate">{location}</p>
             </div>
           )}
         </div>
