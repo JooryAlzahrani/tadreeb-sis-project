@@ -1,12 +1,32 @@
-import { Blog } from "@/types/blog";
-import Image from "next/image";
-import Link from "next/link";
+/*
+  Purpose: this component renders a single 'blog post' or internship listing card.
+  it displays a summary of the internship post with: image, title, short description, autho info, primary tag, location
+  clicking to the card or title navigates to the detailed blog/internship page.
 
+  Technologies:
+  - React with TypeScript
+  - Next.js for routing and image optimization
+  - Tailwind CSS for styling
+
+*/
+
+
+import { Blog } from "@/types/blog"; // Type definition for the blog/internship data
+import Image from "next/image"; // Optimized image component
+import Link from "next/link"; // Client-side routing for links
+
+/**
+ * Props:
+ * @param blog - A single blog/internship object containing all necessary info
+ */
+ 
 const SingleBlog = ({ blog }: { blog: Blog }) => {
-  const { id, title, image, paragraph, author, tags, location, slug } = blog;
+  const { id, title, image, paragraph, author, tags, location, slug } = blog;  // Destructure the blog object for easy access
 
-  const detailLink = `/blog/${slug || id}`;
+  const detailLink = `/blog/${slug || id}`; // Determine the link to the detail page, use slug if available, otherwise use id
 
+  // Render the blog/internship card with styling and structure
+  
   return (
     <div
       className="wow fadeInUp hover:shadow-two dark:hover:shadow-gray-dark group relative overflow-hidden rounded-sm bg-white shadow-one duration-300 dark:bg-dark flex flex-col h-full"

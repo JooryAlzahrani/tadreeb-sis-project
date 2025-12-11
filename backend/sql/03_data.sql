@@ -1,4 +1,6 @@
-
+/*
+This is a mySQL script with data of internships to be interted into the Internship table in the database.
+*/
 INSERT INTO Internship (
     title,
     company,
