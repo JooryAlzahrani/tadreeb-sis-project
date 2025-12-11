@@ -114,16 +114,7 @@ const Footer = () => {
                     </a>
                   </li>
                   <li>
-                    <a
-                      href={getNavPath("#")}
-                      onClick={(e) => e.preventDefault()}
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
-                    >
-                      Pricing
-                    </a>
-                  </li>
-                  <li>
-                    <a
+                     <a
                       rel="nofollow noopener noreferrer"
                       href={getNavPath("/about")}
                       className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
@@ -135,43 +126,31 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12">
-              <div className="mb-12 lg:mb-16">
-                <h2 className="mb-10 text-xl font-bold text-black dark:text-white">
-                  Terms
-                </h2>
-                <ul>
-                  <li>
-                    <a
-                      href="#"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      TOS
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      Privacy Policy
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href="#"
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
-                      onClick={(e) => e.preventDefault()}
-                    >
-                      Refund Policy
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
+           <div className="w-full px-4 sm:w-1/2 md:w-1/2 lg:w-2/12 xl:w-2/12">
+  <div className="mb-12 lg:mb-16">
+    <h2 className="mb-10 text-xl font-bold text-black dark:text-white">
+      Account
+    </h2>
+    <ul>
+      <li>
+        <Link
+          href="/signin" 
+          className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+        >
+          Log In
+        </Link>
+      </li>
+      <li>
+        <Link
+          href="/signup"
+          className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
+        >
+          Sign Up
+        </Link>
+      </li>
+    </ul>
+  </div>
+</div>
             <div className="w-full px-4 md:w-1/2 lg:w-4/12 xl:w-3/12">
               <div className="mb-12 lg:mb-16">
                 <h2 className="mb-10 text-xl font-bold text-black dark:text-white">
@@ -185,15 +164,6 @@ const Footer = () => {
                       className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
                     >
                       Open Support Ticket
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href={getNavPath("#")}
-                      onClick={(e) => e.preventDefault()}
-                      className="mb-4 inline-block text-base text-body-color duration-300 hover:text-primary dark:text-body-color-dark dark:hover:text-primary"
-                    >
-                      Terms of Use
                     </a>
                   </li>
                   <li>

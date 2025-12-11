@@ -38,7 +38,7 @@ const menuData: Menu[] = [
       },
       {
         id: 45,
-        title: "Internship Listings ",
+        title: "Internship Listings",
         path: "/internship-hub",
         newTab: false,
       },
