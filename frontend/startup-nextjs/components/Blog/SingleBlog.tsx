@@ -23,7 +23,7 @@ import Link from "next/link"; // Client-side routing for links
 const SingleBlog = ({ blog }: { blog: Blog }) => {
   const { id, title, image, paragraph, author, tags, location, slug } = blog;  // Destructure the blog object for easy access
 
-  const detailLink = `/blog/${slug || id}`; // Determine the link to the detail page, use slug if available, otherwise use id
+  const detailLink = `/${id}`; // Determine the link to the detail page, use slug if available, otherwise use id
 
   // Render the blog/internship card with styling and structure
   

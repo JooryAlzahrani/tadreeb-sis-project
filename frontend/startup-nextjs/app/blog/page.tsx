@@ -1,3 +1,5 @@
+// this page works fine
+
 /**
  * Purpose:
  * This page displays a list of all verified internship opportunities.

@@ -1,3 +1,4 @@
+// this page does not work 
 /*
    Purpose: 
    this is a next.js page component that defines the page for displaying the details of a specific internship
@@ -30,7 +31,7 @@ export const metadata: Metadata = { // metadata for SEO
 */
 async function getInternship(id: string) {
   const res = await fetch(
-    `http://localhost/getInternshipByID.php?id=${id}`, //PHP API endpoint
+    `http://localhost/getInternships.php?id=${id}`, //PHP API endpoint
     { cache: "no-store" } // ensures fresh data on each request
   );
 
