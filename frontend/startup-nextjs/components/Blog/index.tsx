@@ -4,7 +4,7 @@ import { mapPHPDataToBlog } from "./blogData";
 
 const Blog = async () => {
   // fetch internship data from PHP API
-  const res = await fetch("http://localhost/getInternships.php", {
+  const res = await fetch("http://localhost/api/getInternships.php", {
     cache: "no-store",
   });
 

@@ -1,79 +1,75 @@
-// this page does not work 
 /*
    Purpose: 
    this is a next.js page component that defines the page for displaying the details of a specific internship
    it fetches the internship data from a PHP backend API and renders it using React
-   once the page runs, it shows title, author, location, deadline, description, tags, and an apply button for the internship
-
-   Technologies used:
-   - next.js
-   - typescript
-   - react
-   - tailwindCSS for styling
 */
 
-import SharePost from "@/components/Blog/SharePost"; // component for sharing the post
-import TagButton from "@/components/Blog/TagButton"; // component for displaying tags
-import Image from "next/image"; // next.js image component for optimized image rendering
-import { Metadata } from "next";  // for defining page metadata
+import SharePost from "@/components/Blog/SharePost";
+import TagButton from "@/components/Blog/TagButton";
+import Image from "next/image";
+import { Metadata } from "next";
 
-
-export const metadata: Metadata = { // metadata for SEO 
+export const metadata: Metadata = {
   title: "Internship Details | Tadreeb",
   description: "View details for a specific internship opportunity.",
 };
+
 /*
    Purpose: fetches internship details by internshipID from API
-    @param id - internship ID
-    @returns internship data in JSON format
-    @throws error if fetch fails
-
+   @param id - internship ID
+   @returns internship data in JSON format (ARRAY)
 */
 async function getInternship(id: string) {
   const res = await fetch(
-    `http://localhost/getInternships.php?id=${id}`, //PHP API endpoint
-    { cache: "no-store" } // ensures fresh data on each request
+    `http://localhost/api/getInternships.php?id=${id}`,
+    {
+      cache: "no-store",
+      headers: {
+        Accept: "application/json",
+      },
+    }
   );
 
-  if (!res.ok) {
-    throw new Error("Failed to fetch internship");
-  }
+  const text = await res.text();
 
-  return res.json(); // return data in JSON format
+  try {
+    return JSON.parse(text);
+  } catch {
+    throw new Error(
+      "Backend did not return JSON. Response was:\n" + text
+    );
+  }
 }
 
 /**
  * The main page component that renders internship details.
- * This is an async component because it fetches data from the API.
- * 
- * @param params - Object containing the route parameters, including `id`
  */
-
 const BlogDetailsPage = async ({ params }: { params: { id: string } }) => {
-  const internship = await getInternship(params.id);
+  const data = await getInternship(params.id);
 
-  // Error handling: if internship data contains an error message. either from API or data not found, display it
-  if (internship.error) {
-    return <div className="text-center text-red-500">{internship.error}</div>;
+  // PHP returns an ARRAY
+  const internship = data?.[0];
+
+  if (!internship) {
+    return (
+      <div className="pt-[150px] text-center text-red-500">
+        Internship not found
+      </div>
+    );
   }
 
-  // Renders internship details with styling 
   return (
     <>
       <section className="pb-[120px] pt-[150px]">
         <div className="container">
           <div className="-mx-4 flex flex-wrap justify-center">
             <div className="w-full px-4 lg:w-8/12">
-
               <div>
-                {/* TITLE */}
                 <h2 className="mb-8 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl">
                   {internship.title}
                 </h2>
 
                 <div className="mb-10 flex flex-wrap items-center justify-between border-b border-body-color border-opacity-10 pb-4 dark:border-white dark:border-opacity-10">
-
-                  {/* AUTHOR + COMPANY LOGO */}
                   <div className="flex flex-wrap items-center">
                     <div className="mb-5 mr-10 flex items-center">
                       <div className="mr-4">
@@ -87,12 +83,12 @@ const BlogDetailsPage = async ({ params }: { params: { id: string } }) => {
                       </div>
                       <div>
                         <span className="text-base font-medium text-body-color">
-                          Posted by <span>{internship.author.name}</span>
+                          Posted by{" "}
+                          <span>{internship.author.name}</span>
                         </span>
                       </div>
                     </div>
 
-                    {/* LOCATION + DEADLINE */}
                     <div className="mb-5 flex items-center">
                       <p className="mr-5 text-base font-medium text-body-color">
                         📍 {internship.location}
@@ -103,7 +99,6 @@ const BlogDetailsPage = async ({ params }: { params: { id: string } }) => {
                     </div>
                   </div>
 
-                  {/* APPLY BUTTON */}
                   <div className="mb-5">
                     <a
                       href={internship.applyLink ?? "#"}
@@ -116,23 +111,21 @@ const BlogDetailsPage = async ({ params }: { params: { id: string } }) => {
                   </div>
                 </div>
 
-                {/* PARAGRAPH */}
-                <div>
-                  <p className="mb-8 text-base font-medium leading-relaxed text-body-color">
-                    {internship.paragraph}
-                  </p>
-                </div>
+                <p className="mb-8 text-base font-medium leading-relaxed text-body-color">
+                  {internship.paragraph}
+                </p>
 
-                {/* TAGS */}
                 <div className="items-center justify-between sm:flex">
                   <div className="mb-5">
                     <h4 className="mb-3 text-sm font-medium text-body-color">
                       Majors Tagged:
                     </h4>
                     <div className="flex items-center">
-                      {internship.tags.map((tag: string, index: number) => (
-                        <TagButton key={index} text={tag} />
-                      ))}
+                      {internship.tags.map(
+                        (tag: string, index: number) => (
+                          <TagButton key={index} text={tag} />
+                        )
+                      )}
                     </div>
                   </div>
 
@@ -145,9 +138,7 @@ const BlogDetailsPage = async ({ params }: { params: { id: string } }) => {
                     </div>
                   </div>
                 </div>
-
               </div>
-
             </div>
           </div>
         </div>
@@ -155,7 +146,5 @@ const BlogDetailsPage = async ({ params }: { params: { id: string } }) => {
     </>
   );
 };
-
-// export the page component as default so next.js can render it
 
 export default BlogDetailsPage;
