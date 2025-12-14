@@ -34,7 +34,7 @@ try {
             "deadline" => $row["deadline"],
         ];
 
-        // ✅ wrap internship object in an array
+        // wrap internship object in an array
         echo json_encode([$internship]);
     } else {
         echo json_encode(['error' => 'Internship not found']); 
