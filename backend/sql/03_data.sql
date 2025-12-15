@@ -74,7 +74,7 @@ INSERT INTO Internship (
     'Saudi Aramco',
     'Oil & Gas',
     'Dhahran, Yanbu, Riyadh',
-    'Gain hands-on experience in the world's leading integrated energy company.',
+    'Gain hands-on experience in the world''s leading integrated energy company.',
     'Aramco offers high-caliber Saudi university students internship opportunities to gain practical experience and meet graduation requirements in engineering, IT, finance, and other fields.',
     JSON_ARRAY('Saudi nationality', 'Currently enrolled in an in-Kingdom or out-of-Kingdom university', 'Minimum GPA 2.5/4 or equivalent', 'Co-op is a mandatory graduation requirement'),
     JSON_ARRAY('Competitive stipend', 'Professional development', 'Potential pathway to full-time employment'),
