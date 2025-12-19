@@ -1,31 +1,30 @@
+"use client";
+
 import Link from "next/link";
-
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-  // MODIFIED: Title reflects "Log In"
-  title: "Log In | Tadreeb", 
-  // MODIFIED: Description is specific to the platform
-  description: "Access your Tadreeb account to explore verified internship opportunities, manage bookmarks, and receive personalized notifications based on your profile.",
-  // other metadata
-};
+import toast, { Toaster } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 const SigninPage = () => {
+  const router = useRouter();
+
   return (
     <>
+      <Toaster position="top-center" />
+
       <section className="relative z-10 overflow-hidden pb-16 pt-36 md:pb-20 lg:pb-28 lg:pt-[180px]">
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
             <div className="w-full px-4">
               <div className="shadow-three mx-auto max-w-[500px] rounded bg-white px-6 py-10 dark:bg-dark sm:p-[60px]">
                 <h3 className="mb-3 text-center text-2xl font-bold text-black dark:text-white sm:text-3xl">
-                  {/* MODIFIED: Main Title */}
                   Log In to Your Tadreeb Account
                 </h3>
+
                 <p className="mb-11 text-center text-base font-medium text-body-color">
-                  {/* MODIFIED: Intro Paragraph */}
                   Access your account to explore verified internship opportunities.
                 </p>
+
+                {/* GOOGLE BUTTON */}
                 <button className="border-stroke dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none">
                   <span className="mr-3">
                     <svg
@@ -35,7 +34,7 @@ const SigninPage = () => {
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
                     >
-                      <g clipPath="url(#clip0_95:967)">
+                      <g clipPath="url(#clip0_95_967)">
                         <path
                           d="M20.0001 10.2216C20.0122 9.53416 19.9397 8.84776 19.7844 8.17725H10.2042V11.8883H15.8277C15.7211 12.539 15.4814 13.1618 15.1229 13.7194C14.7644 14.2769 14.2946 14.7577 13.7416 15.1327L13.722 15.257L16.7512 17.5567L16.961 17.5772C18.8883 15.8328 19.9997 13.266 19.9997 10.2216"
                           fill="#4285F4"
@@ -53,16 +52,12 @@ const SigninPage = () => {
                           fill="#EB4335"
                         />
                       </g>
-                      <defs>
-                        <clipPath id="clip0_95:967">
-                          <rect width="20" height="20" fill="white" />
-                        </clipPath>
-                      </defs>
                     </svg>
                   </span>
                   Sign in with Google
                 </button>
 
+                {/* GITHUB BUTTON */}
                 <button className="border-stroke dark:text-body-color-dark dark:shadow-two mb-6 flex w-full items-center justify-center rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 hover:border-primary hover:bg-primary/5 hover:text-primary dark:border-transparent dark:bg-[#2C303B] dark:hover:border-primary dark:hover:bg-primary/5 dark:hover:text-primary dark:hover:shadow-none">
                   <span className="mr-3">
                     <svg
@@ -77,15 +72,69 @@ const SigninPage = () => {
                   </span>
                   Sign in with Github
                 </button>
+
                 <div className="mb-8 flex items-center justify-center">
                   <span className="hidden h-[1px] w-full max-w-[70px] bg-body-color/50 sm:block"></span>
                   <p className="w-full px-5 text-center text-base font-medium text-body-color">
-                    {/* MODIFIED: Separator Text */}
                     Or, log in with your email
                   </p>
                   <span className="hidden h-[1px] w-full max-w-[70px] bg-body-color/50 sm:block"></span>
                 </div>
-                <form>
+
+                {/* EMAIL / PASSWORD FORM */}
+                <form
+                  onSubmit={async (e) => {
+                    e.preventDefault();
+
+                    const email = (e.target as any).email.value;
+                    const password = (e.target as any).password.value;
+
+                    if (!email || !password) {
+                      toast.error("Please fill all fields");
+                      return;
+                    }
+
+                    try {
+                      const res = await fetch("http://localhost/api/login.php", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ email, password }),
+                      });
+
+                      const data = await res.json();
+
+                      if (!data.success) {
+                        if (data.errorType === "email_not_found") {
+                          toast.error("Email not found");
+                        } else if (data.errorType === "wrong_password") {
+                          toast.error("Incorrect password");
+                        } else {
+                          toast.error("Login failed");
+                        }
+                        return;
+                      }
+
+                      toast.success("Successfully signed in!");
+
+                      // Save login state
+                      localStorage.setItem("loggedIn", "true");
+                      localStorage.setItem("email", email);
+
+                      const userName = email.split("@")[0];
+
+                      setTimeout(() => {
+                        toast.success(`Hello, ${userName}! 👋`);
+                      }, 600);
+
+                      // Redirect to homepage
+                      setTimeout(() => {
+                        router.push("/");
+                      }, 1200);
+                    } catch (err) {
+                      toast.error("Server error");
+                    }
+                  }}
+                >
                   <div className="mb-8">
                     <label
                       htmlFor="email"
@@ -100,6 +149,7 @@ const SigninPage = () => {
                       className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
                     />
                   </div>
+
                   <div className="mb-8">
                     <label
                       htmlFor="password"
@@ -114,73 +164,32 @@ const SigninPage = () => {
                       className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none transition-all duration-300 focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
                     />
                   </div>
-                  <div className="mb-8 flex flex-col justify-between sm:flex-row sm:items-center">
-                    <div className="mb-4 sm:mb-0">
-                      <label
-                        htmlFor="checkboxLabel"
-                        className="flex cursor-pointer select-none items-center text-sm font-medium text-body-color"
-                      >
-                        <div className="relative">
-                          <input
-                            type="checkbox"
-                            id="checkboxLabel"
-                            className="sr-only"
-                          />
-                          <div className="box mr-4 flex h-5 w-5 items-center justify-center rounded border border-body-color border-opacity-20 dark:border-white dark:border-opacity-10">
-                            <span className="opacity-0">
-                              <svg
-                                width="11"
-                                height="8"
-                                viewBox="0 0 11 8"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                              >
-                                <path
-                                  d="M10.0915 0.951972L10.0867 0.946075L10.0813 0.940568C9.90076 0.753564 9.61034 0.753146 9.42927 0.939309L4.16201 6.22962L1.58507 3.63469C1.40401 3.44841 1.11351 3.44879 0.932892 3.63584C0.755703 3.81933 0.755703 4.10875 0.932892 4.29224L0.932878 4.29225L0.934851 4.29424L3.58046 6.95832C3.73676 7.11955 3.94983 7.2 4.1473 7.2C4.36196 7.2 4.55963 7.11773 4.71406 6.9584L10.0468 1.60234C10.2436 1.4199 10.2421 1.1339 10.0915 0.951972ZM4.2327 6.30081L4.2317 6.2998C4.23206 6.30015 4.23237 6.30049 4.23269 6.30082L4.2327 6.30081Z"
-                                  fill="#3056D3"
-                                  stroke="#3056D3"
-                                  strokeWidth="0.4"
-                                />
-                              </svg>
-                            </span>
-                          </div>
-                        </div>
-                        Keep me signed in
-                      </label>
-                    </div>
-                    <div>
-                      <a
-                        href="#0"
-                        className="text-sm font-medium text-primary hover:underline"
-                      >
-                        Forgot Password?
-                      </a>
-                    </div>
-                  </div>
+
                   <div className="mb-6">
                     <button className="shadow-submit dark:shadow-submit-dark flex w-full items-center justify-center rounded-sm bg-primary px-9 py-4 text-base font-medium text-white duration-300 hover:bg-primary/90">
-                      {/* MODIFIED: Submit button text */}
                       Log In
                     </button>
                   </div>
                 </form>
+
                 <p className="text-center text-base font-medium text-body-color">
-                  {/* MODIFIED: Link text and destination */}
                   Don’t have an account?{" "}
                   <Link href="/register" className="text-primary hover:underline">
                     Create an Account
                   </Link>
                 </p>
-                
-                {/* ADDED: Closing Note */}
-                <p className="mt-8 text-center text-sm font-medium text-body-color/80 dark:text-white/80">
-                  Logging in gives students full access to Tadreeb’s features, including saved internships, notifications, and personalized recommendations.
-                </p>
 
+                <p className="mt-8 text-center text-sm font-medium text-body-color/80 dark:text-white/80">
+                  Logging in gives students full access to Tadreeb’s features,
+                  including saved internships, notifications, and personalized
+                  recommendations.
+                </p>
               </div>
             </div>
           </div>
         </div>
+
+        {/* BACKGROUND SVG */}
         <div className="absolute left-0 top-0 z-[-1]">
           <svg
             width="1440"
@@ -190,7 +199,7 @@ const SigninPage = () => {
             xmlns="http://www.w3.org/2000/svg"
           >
             <mask
-              id="mask0_95:1005"
+              id="mask0_95_1005"
               style={{ maskType: "alpha" }}
               maskUnits="userSpaceOnUse"
               x="0"
@@ -200,21 +209,23 @@ const SigninPage = () => {
             >
               <rect width="1440" height="969" fill="#090E34" />
             </mask>
-            <g mask="url(#mask0_95:1005)">
+
+            <g mask="url(#mask0_95_1005)">
               <path
                 opacity="0.1"
                 d="M1086.96 297.978L632.959 554.978L935.625 535.926L1086.96 297.978Z"
-                fill="url(#paint0_linear_95:1005)"
+                fill="url(#paint0_linear_95_1005)"
               />
               <path
                 opacity="0.1"
                 d="M1324.5 755.5L1450 687V886.5L1324.5 967.5L-10 288L1324.5 755.5Z"
-                fill="url(#paint1_linear_95:1005)"
+                fill="url(#paint1_linear_95_1005)"
               />
             </g>
+
             <defs>
               <linearGradient
-                id="paint0_linear_95:1005"
+                id="paint0_linear_95_1005"
                 x1="1178.4"
                 y1="151.853"
                 x2="780.959"
@@ -224,8 +235,9 @@ const SigninPage = () => {
                 <stop stopColor="#4A6CF7" />
                 <stop offset="1" stopColor="#4A6CF7" stopOpacity="0" />
               </linearGradient>
+
               <linearGradient
-                id="paint1_linear_95:1005"
+                id="paint1_linear_95_1005"
                 x1="160.5"
                 y1="220"
                 x2="1099.45"

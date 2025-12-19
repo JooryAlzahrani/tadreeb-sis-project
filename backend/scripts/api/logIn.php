@@ -1,12 +1,13 @@
 <?php
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Headers: Content-Type");
+header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header("Content-Type: application/json");
 
-// Include database connection (PDO)
+// Include database connection
 require_once '../db/connection.php';
 
-// Allow only POST requests
+// Allow only POST
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     echo json_encode([
         "success" => false,
@@ -15,20 +16,21 @@ if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     exit;
 }
 
-// Read JSON data sent from frontend
-$data = json_decode(file_get_contents("php://input"), true);
+// Read JSON input
+$raw = file_get_contents("php://input");
+$data = json_decode($raw, true);
 
-// If JSON decoding fails, fallback to $_POST
+// If JSON fails, fallback to form data
 if (json_last_error() !== JSON_ERROR_NONE) {
     $data = $_POST;
 }
 
-// Collect input data
+// Extract fields
 $email = $data["email"] ?? null;
 $password = $data["password"] ?? null;
 
-// Basic validation
-if (empty($email) || empty($password)) {
+// Validate input
+if (!$email || !$password) {
     echo json_encode([
         "success" => false,
         "message" => "Email and password are required."
@@ -38,12 +40,11 @@ if (empty($email) || empty($password)) {
 
 try {
     // Check if email exists
-    $sql = "SELECT password FROM Users WHERE email = ?";
+    $sql = "SELECT password FROM Users WHERE email = ?";  // <-- check your table name!!
     $stmt = $pdo->prepare($sql);
     $stmt->execute([$email]);
 
     if ($stmt->rowCount() === 0) {
-        // Case 3: Email not found
         echo json_encode([
             "success" => false,
             "errorType" => "email_not_found",
@@ -56,13 +57,11 @@ try {
 
     // Verify password
     if (password_verify($password, $user["password"])) {
-        // Case 1: Login successful
         echo json_encode([
             "success" => true,
             "message" => "Login successful."
         ]);
     } else {
-        // Case 2: Wrong password
         echo json_encode([
             "success" => false,
             "errorType" => "wrong_password",
@@ -71,7 +70,6 @@ try {
     }
 
 } catch (PDOException $e) {
-    // Database error
     echo json_encode([
         "success" => false,
         "message" => "Database error during login.",
