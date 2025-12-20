@@ -1,20 +1,20 @@
-"use client"; //  TALA CHANGE: needed because we use React state + fetch in the browser
+"use client"; 
 
 import React, { useState } from "react";
 
 import NewsLatterBox from "./NewsLatterBox";
 
 const Contact = () => {
-  //  TALA CHANGE: store form fields (keeps existing UI unchanged)
+  
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
 
-  //  TALA CHANGE: show user feedback without changing styling/layout
+ 
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
-  //  TALA CHANGE: submit form data to PHP API
+ 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
@@ -24,20 +24,20 @@ const Contact = () => {
       const res = await fetch("http://localhost:8000/api/contactUs.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        // ✅ Send JSON (PHP must decode php://input)
+       
         body: JSON.stringify({ name, email, message }),
       });
 
       const data = await res.json().catch(() => ({}));
 
       if (!res.ok || !data.success) {
-        // ✅ Prefer backend error message if provided
+       
         throw new Error(data.error || data.message || "Failed to send message");
       }
 
       setStatus("success");
 
-      // ✅ Optional: clear form after success
+     
       setName("");
       setEmail("");
       setMessage("");
@@ -64,7 +64,7 @@ const Contact = () => {
                 Our support team will get back to you ASAP via email.
               </p>
 
-              {/* ✅ TALA CHANGE: attach submit handler (no styling changed) */}
+              
               <form onSubmit={handleSubmit}>
                 <div className="-mx-4 flex flex-wrap">
                   <div className="w-full px-4 md:w-1/2">
@@ -80,8 +80,8 @@ const Contact = () => {
                         type="text"
                         placeholder="Enter your name"
                         className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
-                        value={name} // ✅ TALA CHANGE
-                        onChange={(e) => setName(e.target.value)} // ✅ TALA CHANGE
+                        value={name} 
+                        onChange={(e) => setName(e.target.value)} 
                       />
                     </div>
                   </div>
@@ -99,7 +99,7 @@ const Contact = () => {
                         type="email"
                         placeholder="Enter your email"
                         className="border-stroke dark:text-body-color-dark dark:shadow-two w-full rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
-                        value={email} // ✅ TALA CHANGE
+                        value={email}
                         onChange={(e) => setEmail(e.target.value)} // ✅ TALA CHANGE
                       />
                     </div>
@@ -119,13 +119,13 @@ const Contact = () => {
                         rows={5}
                         placeholder="Enter your Message"
                         className="border-stroke dark:text-body-color-dark dark:shadow-two w-full resize-none rounded-sm border bg-[#f8f8f8] px-6 py-3 text-base text-body-color outline-none focus:border-primary dark:border-transparent dark:bg-[#2C303B] dark:focus:border-primary dark:focus:shadow-none"
-                        value={message} // ✅ TALA CHANGE
+                        value={message} 
                         onChange={(e) => setMessage(e.target.value)} // ✅ TALA CHANGE
                       ></textarea>
                     </div>
                   </div>
 
-                  {/* ✅ TALA CHANGE: simple status text, no design changes */}
+                  
                   {status === "success" && (
                     <div className="w-full px-4 mb-4 text-sm font-medium text-green-600">
                       Message sent successfully.
@@ -139,8 +139,8 @@ const Contact = () => {
 
                   <div className="w-full px-4">
                     <button
-                      type="submit" // TALA CHANGE
-                      disabled={status === "loading"} //  TALA CHANGE
+                      type="submit" 
+                      disabled={status === "loading"} 
                       className="shadow-submit dark:shadow-submit-dark rounded-sm bg-primary px-9 py-4 text-base font-medium text-white duration-300 hover:bg-primary/90"
                     >
                       {status === "loading" ? "Sending..." : "Submit Ticket"}
