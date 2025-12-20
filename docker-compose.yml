@@ -17,6 +17,18 @@ services:
       MYSQL_DATABASE: tadreeb_sis
       MYSQL_USER: tadreeb_user
       MYSQL_PASSWORD: userpassword
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: rootpassword
+
 volumes:
   db:
   
